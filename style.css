@@ -4,36 +4,51 @@ html, body {
 }
 .menu-bar {
     height: 78px;
-    background-color : grey;
+    background-color : #009DDC;
 }
 
 .tabs-bar {
     height: 70px;
-    background-color:khaki;
+    background-color: rgb(141, 199, 223);
+}
+
+.dropdown {
+    margin: 16px 0 16px 0;
+    display: inline-block;
+    height: 48;
+    width: 240px;
 }
 
 .notebook-title {
-    display: inline-block;
-    max-width: 200px; 
-    padding: 16px 0px 16px 0px;
+    float: left;
     font: bold 2em arial;
-    color: orangered;
+    color: #ff4500;
     text-shadow: 1px 1px 4px gray; 
     margin-left: 1rem;
+}
+
+.arrow {
+    height: 40px;
+    width: 40px;
+    float: right;
+    background-image: url("/icons/png/dropdown.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
 .work-area {
     float: left;
     width: calc(100% * 0.91);    
     height: calc(100% - 148px);
-    background-color:darkslategray;
+    background-color:white;
 }
 
 .page-sidebar {
     float: right;
     width: calc(100% * 0.09);
     height: calc(100% - 148px);
-    background-color: darksalmon;
+    background-color: #009DDC;
 }
 
 .tool {
@@ -42,26 +57,34 @@ html, body {
     height: 58px;
     width: 58px;
     border-radius: 29px;
-    border: 1px solid gray;
+    border: 1px solid orangered;
     
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
 #T1 {
     bottom: 302px;
+    background-image: url("/icons/png/type.png");
 }
 
 #T2 {
     bottom: 234px;
+    background-image: url("/icons/png/pen.png");    
 }
 
 #T3 {
     bottom: 166px;
+    background-image: url("/icons/png/table.png");
 }
 
 #T4 {
     bottom: 98px;
+    background-image: url("/icons/png/mic.png");
 }
 
 #T5 {
     bottom: 30px;
+    background-image: url("/icons/png/move.png");
 }
