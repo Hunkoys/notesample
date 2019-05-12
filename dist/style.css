@@ -31,7 +31,7 @@ html, body {
     height: 40px;
     width: 40px;
     float: right;
-    background-image: url("/icons/png/dropdown.png");
+    background-image: url("/dist/icons/png/dropdown.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60%;
@@ -66,25 +66,25 @@ html, body {
 
 #T1 {
     bottom: 302px;
-    background-image: url("/icons/png/type.png");
+    background-image: url("/dist/icons/png/type.png");
 }
 
 #T2 {
     bottom: 234px;
-    background-image: url("/icons/png/pen.png");    
+    background-image: url("/dist/icons/png/pen.png");    
 }
 
 #T3 {
     bottom: 166px;
-    background-image: url("/icons/png/table.png");
+    background-image: url("/dist/icons/png/table.png");
 }
 
 #T4 {
     bottom: 98px;
-    background-image: url("/icons/png/mic.png");
+    background-image: url("/dist/icons/png/mic.png");
 }
 
 #T5 {
     bottom: 30px;
-    background-image: url("/icons/png/move.png");
+    background-image: url("/dist/icons/png/move.png");
 }
