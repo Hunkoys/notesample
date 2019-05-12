@@ -1,0 +1,67 @@
+html, body {
+    margin: 0px;
+    height: 100%;
+}
+.menu-bar {
+    height: 78px;
+    background-color : grey;
+}
+
+.tabs-bar {
+    height: 70px;
+    background-color:khaki;
+}
+
+.notebook-title {
+    display: inline-block;
+    max-width: 200px; 
+    padding: 16px 0px 16px 0px;
+    font: bold 2em arial;
+    color: orangered;
+    text-shadow: 1px 1px 4px gray; 
+    margin-left: 1rem;
+}
+
+.work-area {
+    float: left;
+    width: calc(100% * 0.91);    
+    height: calc(100% - 148px);
+    background-color:darkslategray;
+}
+
+.page-sidebar {
+    float: right;
+    width: calc(100% * 0.09);
+    height: calc(100% - 148px);
+    background-color: darksalmon;
+}
+
+.tool {
+    position: absolute;
+    left: 20px;;
+    height: 58px;
+    width: 58px;
+    border-radius: 29px;
+    border: 1px solid gray;
+    
+}
+
+#T1 {
+    bottom: 302px;
+}
+
+#T2 {
+    bottom: 234px;
+}
+
+#T3 {
+    bottom: 166px;
+}
+
+#T4 {
+    bottom: 98px;
+}
+
+#T5 {
+    bottom: 30px;
+}
