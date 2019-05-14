@@ -35,19 +35,39 @@
     </nav>
     <header class="tabs-bar">
         <div class="dropdown">
-            <div class="notebook-title">
+            <span class="notebook-title">
                 Biology
-            </div>
+            </span>
             <div class="arrow">
 
             </div>
       </div>
     </header>
-    <div class="work-area">
+    <div id="work-area" onmousedown="foo(event)">
 
     </div>
     <div class="page-sidebar">
 
     </div>
 </body>
+
+<script>
+    document.getElementById("work-area").addEventListener("mousedown", e => { e.stopPropagation(); }, true)
+
+    function foo(event) {
+        let textblock = document.createElement("div")
+        let textarea = document.createElement("textarea")
+        textblock.className = "textblock"
+        textarea.className = "textblock-ta"
+
+        textblock.style = "top: calc(" + event.clientY + "px - 20px); left: " + event.clientX + "px;"
+        textblock.appendChild(textarea)
+        document.getElementById("work-area").appendChild(textblock)
+        
+
+        console.log(newdiv)
+        console.log(event)
+        console.log(g++)
+    }
+</script>
 </html>
