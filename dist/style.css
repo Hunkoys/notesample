@@ -24,6 +24,7 @@ html, body {
     font: bold 2em arial;
     color: #ff4500;
     text-shadow: 1px 1px 4px gray; 
+    margin: 0px;
     margin-left: 1rem;
 }
 
@@ -31,13 +32,13 @@ html, body {
     height: 40px;
     width: 40px;
     float: right;
-    background-image: url("/icons/png/dropdown.png");
+    background-image: url("icons/png/dropdown.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60%;
 }
 
-.work-area {
+#work-area {
     float: left;
     width: calc(100% * 0.91);    
     height: calc(100% - 148px);
@@ -66,25 +67,51 @@ html, body {
 
 #T1 {
     bottom: 302px;
-    background-image: url("/icons/png/type.png");
+    background-image: url("icons/png/type.png");
 }
 
 #T2 {
     bottom: 234px;
-    background-image: url("/icons/png/pen.png");    
+    background-image: url("icons/png/pen.png");    
 }
 
 #T3 {
     bottom: 166px;
-    background-image: url("/icons/png/table.png");
+    background-image: url("icons/png/table.png");
 }
 
 #T4 {
     bottom: 98px;
-    background-image: url("/icons/png/mic.png");
+    background-image: url("icons/png/mic.png");
 }
 
 #T5 {
     bottom: 30px;
-    background-image: url("/icons/png/move.png");
+    background-image: url("icons/png/move.png");
+}
+
+.textblock {
+    position: absolute;
+    padding: 10px 1px 1px 0px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: white;
+}
+
+.textblock:hover {
+    border: 1px solid black;
+    z-index: 100;
+}
+
+.textblock-ta {
+    border-style: none;
+    border-color: transparent;
+    overflow: hidden;
+    resize: none;
+}
+
+.textblock-ta:focus {
+    border: none;
+    outline: none;
+    resize: both;
 }
