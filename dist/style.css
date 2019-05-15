@@ -90,28 +90,19 @@ html, body {
     background-image: url("icons/png/move.png");
 }
 
-.textblock {
+.block {
+    display: inline-block;
     position: absolute;
-    padding: 10px 1px 1px 0px;
+    width: auto;
+    padding: 20px 10px 10px;
     border-radius: 10px;
-    border: 1px solid transparent;
-    background-color: white;
+    border: 2px solid transparent;
 }
 
-.textblock:hover {
-    border: 1px solid black;
-    z-index: 100;
-}
-
-.textblock-ta {
-    border-style: none;
-    border-color: transparent;
-    overflow: hidden;
-    resize: none;
-}
-
-.textblock-ta:focus {
-    border: none;
+.block:focus {
     outline: none;
-    resize: both;
+}
+
+.block:hover {
+    border: 2px solid plum;
 }

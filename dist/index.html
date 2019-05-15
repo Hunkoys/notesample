@@ -33,7 +33,7 @@
     <nav class="menu-bar">
 
     </nav>
-    <header class="tabs-bar">
+    <header class="tabs-bar" draggable="true">
         <div class="dropdown">
             <span class="notebook-title">
                 Biology
@@ -43,8 +43,7 @@
             </div>
       </div>
     </header>
-    <div id="work-area" onmousedown="foo(event)">
-
+    <div id="work-area" onclick="foo(event)">
     </div>
     <div class="page-sidebar">
 
@@ -52,22 +51,57 @@
 </body>
 
 <script>
-    document.getElementById("work-area").addEventListener("mousedown", e => { e.stopPropagation(); }, true)
-
+    document.getElementById("work-area").addEventListener("click", e => { e.stopPropagation(); }, true)
+    let activeElement;
     function foo(event) {
-        let textblock = document.createElement("div")
-        let textarea = document.createElement("textarea")
-        textblock.className = "textblock"
-        textarea.className = "textblock-ta"
-
-        textblock.style = "top: calc(" + event.clientY + "px - 20px); left: " + event.clientX + "px;"
-        textblock.appendChild(textarea)
-        document.getElementById("work-area").appendChild(textblock)
-        
-
-        console.log(newdiv)
-        console.log(event)
-        console.log(g++)
+        if (activeElement === 'block')
+    {
+        activeElement = ''
     }
+    else {
+        let block = document.createElement('a')
+
+        block.contentEditable = 'true'
+        block.className = 'block'
+        block.style = 'top:' + (event.clientY - 8) + 'px; left:' + event.clientX + 'px;'
+        block.draggable = 'true'
+        block.ondragstart = dragstart
+        block.ondragend = dragend
+        block.onblur = validate
+        block.onmousemove = hover
+
+        document.getElementById('work-area').appendChild(block).focus()
+        activeElement = document.activeElement.className
+        console.log(activeElement)
+        }
+    }
+
+    function validate(e) {
+        var caller = e.target || e.scrElement
+        if (caller.innerHTML === "")
+        {
+           caller.remove()
+        }
+    }
+
+    function hover(e) {
+       if (e.clientX + 'px' > e.target.style.left && e.clientY + 'px' > e.target.style.top && (e.clientX - 10) + 'px' < e.target.style.left && (e.clientY - 100) + 'px' < e.target.style.top )
+       {
+            e.target.style.cursor = 'grab'
+            
+       }
+       else {   
+            e.target.style.cursor = 'text'
+       }
+    }
+
+    function dragstart(e) {
+    }
+
+    function dragend(e) {
+        e.target.style.left = e.clientX + 'px' 
+        e.target.style.top = e.clientY + 'px'
+    }
+
 </script>
 </html>
