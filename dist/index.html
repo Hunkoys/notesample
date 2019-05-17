@@ -40,39 +40,109 @@
             </span>
             <div class="arrow">
 
-            </div>
+            </div>  
       </div>
     </header>
-    <div id="work-area" onclick="foo(event)">
-    </div>
-    <div class="page-sidebar">
 
+    <section id="work-area" onclick="foo(event)" onmousemove="wahover(event)" onkeydown="keydown(event)"></section>
+
+    <div class="page-sidebar">
+        
     </div>
+
 </body>
 
+<script src="rangy-core.js"></script>
+<script src="rangy-classapplier.js"></script>
+<script src="rangy-textrange.js"></script>
+
 <script>
-    document.getElementById("work-area").addEventListener("click", e => { e.stopPropagation(); }, true)
-    let activeElement;
-    function foo(event) {
-        if (activeElement === 'block')
-    {
-        activeElement = ''
+    function l(msg) {
+        if (msg){
+            console.log(msg)
+        }
+        else {
+            console.log("WORKS")
+        }
     }
-    else {
-        let block = document.createElement('a')
+    // Declare style classes globaly here: 
+    var headerStyler
+    var subTitStyler
+    // End of Declarations
 
-        block.contentEditable = 'true'
-        block.className = 'block'
-        block.style = 'top:' + (event.clientY - 8) + 'px; left:' + event.clientX + 'px;'
-        block.draggable = 'true'
-        block.ondragstart = dragstart
-        block.ondragend = dragend
-        block.onblur = validate
-        block.onmousemove = hover
+    var styleApplier
 
-        document.getElementById('work-area').appendChild(block).focus()
-        activeElement = document.activeElement.className
-        console.log(activeElement)
+    window.onload = function () {
+        rangy.init();
+
+    
+        var classApplier = rangy.modules.ClassApplier;
+        
+        if (rangy.supported && classApplier && classApplier.supported) {
+            // Define style classes here: 
+            headerStyler = rangy.createClassApplier('header-1', { tagNames: ['span', 'b'] })
+            subTitStyler = rangy.createClassApplier('sub-title', { tagNames: ['span', 'b'] }) 
+        }
+
+        styleApplier = callback => {
+            l(rangy.getSelection())
+            
+                if (rangy.getSelection().isCollapsed) {
+                    rangy.getSelection().expand("word", {
+                        wordOptions: {
+                            includeTrailingSpace: true
+                        }
+                    });
+
+                    callback.toggleSelection()
+                }
+                else {
+                    callback.toggleSelection()
+                    l('f')
+                }
+            
+        }
+    }
+
+    document.getElementById("work-area").addEventListener("click", e => { e.stopPropagation(); }, true)
+    
+    let activeItem
+    let BlocktoDrag
+
+    let mouseDown = false
+    let dragBlock = false
+    let clickOffsetX = 0
+    let clickOffsetY = 0
+
+    document.addEventListener('mousedown', () => { mouseDown = true }, true)
+    document.addEventListener('mouseup', () => { mouseDown = false; dragBlock = false }, true)
+
+    function foo(event) {
+        if (activeItem === 'block') {
+            activeItem = ''
+        }
+        else {
+            let block = document.createElement('div')
+
+            block.className = 'block'
+            block.addEventListener('mousedown', blockMouseDown, true)
+
+            let dragHandle = document.createElement('div')
+            dragHandle.className = 'dr-hand'
+            dragHandle.addEventListener('mousedown', drhandMouseDown, true)
+
+            let textarea = document.createElement('div')
+            textarea.className = 'ta'
+            textarea.contentEditable = 'true'
+            textarea.onblur = validate
+
+            block.style = 'top:' + (event.clientY - 8) + 'px; left:' + event.clientX + 'px;'
+
+            block.appendChild(dragHandle)
+            block.appendChild(textarea)
+
+            document.getElementById('work-area').appendChild(block).lastChild.focus()
+            activeItem = document.activeElement.parentNode.className
         }
     }
 
@@ -80,27 +150,37 @@
         var caller = e.target || e.scrElement
         if (caller.innerHTML === "")
         {
-           caller.remove()
+           caller.parentNode.remove()
         }
     }
 
-    function hover(e) {
-       if (e.clientX + 'px' > e.target.style.left && e.clientY + 'px' > e.target.style.top && (e.clientX - 10) + 'px' < e.target.style.left && (e.clientY - 100) + 'px' < e.target.style.top )
-       {
-            e.target.style.cursor = 'grab'
-            
-       }
-       else {   
-            e.target.style.cursor = 'text'
-       }
+    function drhandMouseDown(e) {
+        dragBlock = true
+        BlocktoDrag = e.target.parentNode
     }
 
-    function dragstart(e) {
+    function blockMouseDown(e) {
+
+        clickOffsetX = e.clientX - Number(e.target.parentNode.style.left.replace('px', ''))
+        clickOffsetY = e.clientY - Number(e.target.parentNode.style.top.replace('px', ''))
     }
 
-    function dragend(e) {
-        e.target.style.left = e.clientX + 'px' 
-        e.target.style.top = e.clientY + 'px'
+    function wahover(e) {
+    if (dragBlock) {
+            BlocktoDrag.style.left = (e.clientX - clickOffsetX) + 'px'
+            BlocktoDrag.style.top = (e.clientY - clickOffsetY) + 'px'
+        }
+    }
+
+    
+    
+    function keydown(e) {
+        if (e.altKey && e.key == '1') {
+            styleApplier(headerStyler)
+        }
+        if (e.altKey && e.key == '2') {
+            styleApplier(subTitStyler)
+        }
     }
 
 </script>

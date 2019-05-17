@@ -39,10 +39,12 @@ html, body {
 }
 
 #work-area {
+    font-family: Arial, Helvetica, sans-serif;
     float: left;
     width: calc(100% * 0.91);    
     height: calc(100% - 148px);
     background-color:white;
+    cursor: text;
 }
 
 .page-sidebar {
@@ -94,7 +96,7 @@ html, body {
     display: inline-block;
     position: absolute;
     width: auto;
-    padding: 20px 10px 10px;
+    padding: 0;
     border-radius: 10px;
     border: 2px solid transparent;
 }
@@ -105,4 +107,36 @@ html, body {
 
 .block:hover {
     border: 2px solid plum;
+}
+
+.block:hover .dr-hand {
+    background-color: #ff4500;
+    opacity: 0.3;
+    
+}
+
+.dr-hand {
+    height: 10px;
+    border-radius: 5px ;
+}
+
+.dr-hand:hover {
+    cursor: grab;
+}
+
+.dr-hand:active {
+    cursor: grabbing;
+}
+
+.ta {
+    padding: 10px;
+
+}
+
+.header-1 {
+    font: bold 2em Arial;
+}
+
+.sub-title {
+    font: italic .8em Arial;
 }
